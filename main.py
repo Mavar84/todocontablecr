@@ -56,13 +56,33 @@ app = FastAPI(
 # CORS
 # ======================================================
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_origin_regex=".*",
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=86400
 )
+
+# Preflight universal (maneja OPTIONS)
+@app.options("/{rest_of_path:path}")
+async def preflight_handler(rest_of_path: str):
+    return {}
+
+# Manejo global de errores (para asegurar CORS en errores)
+from fastapi.responses import JSONResponse
+from fastapi.requests import Request
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Error interno del servidor"},
+    )
 
 # ======================================================
 # Verificar conexión a la BD

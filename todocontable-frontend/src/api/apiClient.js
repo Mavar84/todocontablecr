@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://todocontablecr-bca0o637a-mario-vs-projects.vercel.app",
+  headers: { "Content-Type": "application/json" }
 });
 
 // Agregar token automáticamente si existe
