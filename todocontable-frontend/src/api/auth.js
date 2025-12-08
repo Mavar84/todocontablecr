@@ -9,3 +9,9 @@ export async function registrarUsuario(datos) {
   const respuesta = await api.post("/signup", datos);
   return respuesta.data;
 }
+
+
+export async function crearUsuario(datosUsuario) {
+  const respuesta = await api.post("/signup", datosUsuario);
+  return respuesta.data;
+}

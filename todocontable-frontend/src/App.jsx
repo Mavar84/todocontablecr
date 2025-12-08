@@ -6,6 +6,7 @@ import Login from "./pages/login/Login";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Layout from "./components/layout/Layout";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import Signup from "./pages/Signup/Signup";
 
 export default function App() {
   return (
@@ -31,7 +32,14 @@ export default function App() {
 
           {/* Cualquier ruta desconocida */}
           <Route path="*" element={<Navigate to="/" replace />} />
-
+<Route
+  path="/signup"
+  element={
+    <ProtectedRoute>
+      <Signup />
+    </ProtectedRoute>
+  }
+/>
         </Routes>
       </BrowserRouter>
       </div>

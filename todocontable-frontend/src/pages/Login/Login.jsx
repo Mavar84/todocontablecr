@@ -1,10 +1,8 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { TextField, Button, Card, CardContent, Typography } from "@mui/material";
 import { AuthContext } from "../../context/AuthContext";
 import { loginUsuario } from "../../api/auth";
-import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const { guardarSesion } = useContext(AuthContext);
@@ -24,18 +22,33 @@ export default function Login() {
         contrasena: contrasena,
       });
 
+      /* -------------------------------------------------------
+         Guardar token + usuario SIEMPRE (admin o normal)
+      ------------------------------------------------------- */
       guardarSesion(datos.usuario, datos.access_token);
 
+      /* -------------------------------------------------------
+         Lógica nueva según 'access_type'
+      ------------------------------------------------------- */
+
+      if (datos.access_type === "new_user_creator") {
+        navigate("/signup");   // Página para registrar usuarios
+        return;
+      }
+
+      // Usuario normal → dashboard
       navigate("/dashboard");
+
     } catch (err) {
       setError("Credenciales incorrectas");
     }
   }
-const { token } = useContext(AuthContext);
 
-if (token) {
-  return <Navigate to="/dashboard" replace />;
-}
+  const { token } = useContext(AuthContext);
+
+  if (token) {
+    return <Navigate to="/dashboard" replace />;
+  }
 
   return (
     <div style={{
@@ -76,11 +89,7 @@ if (token) {
               sx={{ marginBottom: 3 }}
             />
 
-            <Button
-              fullWidth
-              variant="contained"
-              type="submit"
-            >
+            <Button fullWidth variant="contained" type="submit">
               Ingresar
             </Button>
           </form>
