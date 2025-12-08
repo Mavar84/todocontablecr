@@ -176,7 +176,7 @@ app.include_router(planilla_contabilizacion.router)
 # ======================================================
 # IMPORTANTE: No ejecutar uvicorn en Vercel
 # ======================================================
-
+#modificado
 # Vercel ejecuta FastAPI como función serverless.
 # NO incluir:
 # if __name__ == "__main__":
