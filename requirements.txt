@@ -1,0 +1,27 @@
+# Framework principal
+fastapi==0.110.0
+
+# Servidor ASGI recomendado para FastAPI
+uvicorn[standard]==0.29.0
+
+# ORM y conexión a PostgreSQL
+SQLAlchemy==2.0.29
+psycopg2-binary==2.9.9
+
+# Validación y modelos de datos (FastAPI usa Pydantic)
+pydantic==2.7.1
+pydantic-core==2.18.2
+
+# Variables de entorno (.env)
+python-dotenv==1.0.1
+
+# Seguridad: hashing de contraseñas
+passlib[bcrypt]==1.7.4
+
+# JWT
+PyJWT==2.8.0
+
+# Utilidades opcionales pero recomendadas
+python-multipart==0.0.9   # subir archivos
+email-validator==2.1.1    # validar correos electrónicos
+python-jose[cryptography]==3.3.0
