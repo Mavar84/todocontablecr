@@ -14,3 +14,4 @@ class SignUpRequest(UsuarioBase):
 class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
+    access_type: str 

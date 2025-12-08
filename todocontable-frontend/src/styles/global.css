@@ -1,0 +1,181 @@
+/* -------------------------------------------------------
+   Tipografía global
+------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* -------------------------------------------------------
+   Fondo general con imagen + gradiente + blur
+------------------------------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+
+  background-image:
+    linear-gradient(rgba(22, 42, 65, 0.45), rgba(30, 58, 88, 0.45)),
+    url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #1e293b;
+}
+
+/* Capa global con blur */
+.global-overlay {
+  min-height: 100vh;
+  backdrop-filter: blur(6px);
+}
+
+/* -------------------------------------------------------
+   Colores de texto modernos
+------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  color: #e2e8f0; /* Gris claro azulado moderno */
+  font-weight: 600;
+  margin: 0;
+}
+
+p, span, label, input, td, th {
+  color: #cbd5e1; /* Gris suave azulado */
+}
+
+/* -------------------------------------------------------
+   Botones flat con color moderno
+------------------------------------------------------- */
+button, .mui-button {
+  background: linear-gradient(135deg, #0f3d5c, #146085) !important;
+  color: white !important;
+  border-radius: 0 !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  padding: 10px 18px !important;
+  border: 1px solid #1e4970 !important;
+  transition: background 0.2s ease;
+}
+
+button:hover, .mui-button:hover {
+  background: linear-gradient(135deg, #0d2e44, #124e6c) !important;
+}
+
+/* -------------------------------------------------------
+   Inputs flat modernizados
+------------------------------------------------------- */
+.MuiInputBase-root {
+  background-color: rgba(255, 255, 255, 0.18) !important;
+  border-radius: 0 !important;
+  color: #e2e8f0 !important;
+}
+
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #5982a8 !important;
+  border-width: 1px !important;
+  border-radius: 0 !important;
+}
+
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #7bb7e0 !important;
+}
+
+.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #a3dcff !important;
+}
+
+.MuiInputLabel-root {
+  color: #cbd5e1 !important;
+}
+
+/* -------------------------------------------------------
+   Tablas flat modernas
+------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(15, 31, 50, 0.40);
+  backdrop-filter: blur(5px);
+  color: #cbd5e1;
+}
+
+table thead {
+  background: linear-gradient(135deg, #0f3d5c, #165070);
+  color: #f1f5f9;
+}
+
+table th, table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+table tr:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* -------------------------------------------------------
+   CARDS & PAPER (MUI)
+   Fondo moderno con gradiente + blur + color
+   Estilo flat, sin bordes redondos
+------------------------------------------------------- */
+.MuiCard-root, 
+.MuiPaper-root {
+  background: linear-gradient(
+      135deg,
+      rgba(34, 71, 110, 0.55),
+      rgba(17, 38, 60, 0.45),
+      rgba(9, 23, 40, 0.40)
+  ) !important;
+
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+
+  border: 1px solid rgba(120, 180, 255, 0.25) !important;
+
+  border-radius: 0 !important;     /* flat */
+  box-shadow: none !important;      /* sin sombra 3D */
+
+  color: #e2e8f0 !important;        /* texto claro moderno */
+  transition: 
+      background 0.25s ease, 
+      transform 0.18s ease;
+}
+
+/* Hover elegante y sutil */
+.MuiCard-root:hover,
+.MuiPaper-root:hover {
+  background: linear-gradient(
+      135deg,
+      rgba(50, 100, 150, 0.65),
+      rgba(26, 52, 82, 0.55),
+      rgba(14, 32, 55, 0.50)
+  ) !important;
+
+  transform: translateY(-2px);
+}
+/* -------------------------------------------------------
+   Scrollbar moderna
+------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 31, 50, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2c4b67;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4fc1ff;
+}
+
+/* -------------------------------------------------------
+   Formularios flat
+------------------------------------------------------- */
+.form-container {
+  padding: 22px;
+  background-color: rgba(30, 58, 88, 0.35);
+  backdrop-filter: blur(8px);
+  border-radius: 0;
+  border: 1px solid rgba(163, 203, 255, 0.2);
+}

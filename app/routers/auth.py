@@ -26,7 +26,7 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
             "correo": ADMIN_EMAIL,
             "es_admin": True
         })
-        return TokenResponse(access_token=token)
+        return TokenResponse(access_token=token, access_type="new_user_creator")
 
     # 2. Login normal contra base de datos
     user = obtener_por_correo(db, data.correo)
