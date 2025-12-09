@@ -17,6 +17,21 @@ def get_current_user(token: str = Depends(oauth2_scheme),
             detail="Token inválido o expirado"
         )
 
+    # ------------------------------------------------------
+    # 1. ADMIN COMODÍN: usuario virtual, no se consulta DB
+    # ------------------------------------------------------
+    if payload.get("usuario_id") == 0 and payload.get("es_admin") is True:
+        admin_virtual = Usuario(
+            usuario_id=0,
+            nombre="Administrador",
+            correo=payload.get("correo", "admin@admin.com"),
+            es_admin=True
+        )
+        return admin_virtual
+
+    # ------------------------------------------------------
+    # 2. USUARIO NORMAL → buscar en BD
+    # ------------------------------------------------------
     user = db.query(Usuario).filter(Usuario.usuario_id == payload["usuario_id"]).first()
 
     if not user:
@@ -26,3 +41,4 @@ def get_current_user(token: str = Depends(oauth2_scheme),
         )
 
     return user
+
