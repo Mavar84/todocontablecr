@@ -21,13 +21,12 @@ def get_current_user(token: str = Depends(oauth2_scheme),
     # 1. ADMIN COMODÍN: usuario virtual, no se consulta DB
     # ------------------------------------------------------
     if payload.get("usuario_id") == 0 and payload.get("es_admin") is True:
-        admin_virtual = Usuario(
+        return SimpleNamespace(
             usuario_id=0,
             nombre="Administrador",
             correo=payload.get("correo", "admin@admin.com"),
             es_admin=True
         )
-        return admin_virtual
 
     # ------------------------------------------------------
     # 2. USUARIO NORMAL → buscar en BD
