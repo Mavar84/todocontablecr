@@ -9,12 +9,9 @@ from app.crud.empresa import crear_empresa, obtener_empresas
 router = APIRouter(prefix="/empresas", tags=["Empresa"])
 
 @router.post("/", response_model=Empresa)
-def crear(empresa: EmpresaCreate,
-    db: Session = Depends(get_db),
-          #usuario_actual = Depends(get_current_user)):
+def crear(empresa: EmpresaCreate, db: Session = Depends(get_db)):
     return crear_empresa(db, empresa)
 
 @router.get("/", response_model=list[Empresa])
-def listar(db: Session = Depends(get_db),
-           #usuario_actual = Depends(get_current_user)):
+def listar(db: Session = Depends(get_db)):
     return obtener_empresas(db)
