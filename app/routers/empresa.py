@@ -11,10 +11,10 @@ router = APIRouter(prefix="/empresas", tags=["Empresa"])
 @router.post("/", response_model=Empresa)
 def crear(empresa: EmpresaCreate,
           db: Session = Depends(get_db),
-          usuario_actual = Depends(get_current_user)):
+          #usuario_actual = Depends(get_current_user)):
     return crear_empresa(db, empresa)
 
 @router.get("/", response_model=list[Empresa])
 def listar(db: Session = Depends(get_db),
-           usuario_actual = Depends(get_current_user)):
+           #usuario_actual = Depends(get_current_user)):
     return obtener_empresas(db)
