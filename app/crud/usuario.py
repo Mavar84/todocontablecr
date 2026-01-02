@@ -4,6 +4,7 @@ from app.schemas.usuario import UsuarioCreate
 from app.core.security import hash_password
 
 def crear_usuario(db: Session, usuario: UsuarioCreate, empresa_id: int):
+    print("Usuario a crear:", usuario)
     nuevo = Usuario(
         nombre=usuario.nombre,
         correo=usuario.correo,
@@ -11,6 +12,7 @@ def crear_usuario(db: Session, usuario: UsuarioCreate, empresa_id: int):
         empresa_id=empresa_id,
         activo=True
     )
+    print("Usuario creado:", nuevo)
     db.add(nuevo)
     db.commit()
     db.refresh(nuevo)
