@@ -49,8 +49,7 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
 @router.post("/signup", response_model=UsuarioSchema)
 def signup(
     data: SignUpRequest,
-    db: Session = Depends(get_db),
-    current_user=Depends(get_current_user)  # exige JWT válido
+    db: Session = Depends(get_db)
 ):
     """
     Crea un nuevo usuario en el sistema.
