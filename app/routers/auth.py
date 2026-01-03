@@ -43,7 +43,8 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
         "es_admin": False
     })
 
-    return TokenResponse(access_token=token)
+    return TokenResponse(access_token=token,
+        access_type="normal")
 
 
 @router.post("/signup", response_model=UsuarioSchema)
