@@ -20,3 +20,5 @@ def crear_usuario(db: Session, usuario: UsuarioCreate, empresa_id: int):
 
 def obtener_por_correo(db: Session, correo: str):
     return db.query(Usuario).filter(Usuario.correo == correo).first()
+def obtener_por_empresa(db: Session, empresa_id: int):
+    return db.query(Usuario).filter(Usuario.empresa_id == empresa_id)
