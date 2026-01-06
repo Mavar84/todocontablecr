@@ -7,7 +7,8 @@ from app.schemas.auth import LoginRequest, TokenResponse, SignUpRequest
 from app.schemas.usuario import Usuario as UsuarioSchema, UsuarioCreate
 from app.core.security import verificar_password
 from app.core.jwt import crear_token, get_current_user
-from app.crud.usuario import obtener_por_correo, crear_usuario
+from app.crud.usuario import obtener_por_correo, crear_usuario, obtener_por_empresa
+from app.schemas.empresa import Empresa
 
 router = APIRouter(prefix="/auth", tags=["Autenticación"])
 
@@ -45,7 +46,10 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
 
     return TokenResponse(access_token=token,
         access_type="normal")
-
+    
+@router.get("/{empresa_id}", response_model=list[Empresa])
+def listar(db: Session = Depends(get_db)):
+    return obtener_por_empresa(db, empresa_id)
 
 @router.post("/signup", response_model=UsuarioSchema)
 def signup(
