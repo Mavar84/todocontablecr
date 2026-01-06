@@ -47,7 +47,7 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
     return TokenResponse(access_token=token,
         access_type="normal")
     
-@router.get("/{empresa_id}", response_model=list[Empresa])
+@router.get("/{empresa_id}", response_model=list[UsuarioSchema])
 def listar(db: Session = Depends(get_db)):
     return obtener_por_empresa(db, empresa_id)
 
