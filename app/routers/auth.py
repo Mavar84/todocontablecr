@@ -48,7 +48,7 @@ def login(data: LoginRequest, db: Session = Depends(get_db)):
         access_type="normal")
     
 @router.get("/{empresa_id}", response_model=list[UsuarioSchema])
-def listar(db: Session = Depends(get_db)):
+def listar(empresa_id: int,db: Session = Depends(get_db)):
     return obtener_por_empresa(db, empresa_id)
 
 @router.post("/signup", response_model=UsuarioSchema)
